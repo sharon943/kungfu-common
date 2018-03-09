@@ -8,6 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isIpx: false,
     Discounttype: 0,
     menuDataPro: [],
     discountMenu: [],
@@ -108,6 +109,12 @@ Page({
     //   console.log(openId)
 
     // })
+    console.log(app.globalData.isIpx)
+    if (app.globalData.isIpx){
+      that.setData({
+        isIpx:true
+      })
+    }
     that.setData({
       iconPath: app.globalData.iconPath,
 
@@ -1873,10 +1880,10 @@ Page({
                           activityPro1.productsBonus.bonusProducts[h].activityPrice = activityPro1.productsBonus.bonusProducts[h].value;
 
                         } else if (activityPro1.productsBonus.bonusProducts[h].discountType == 1) {
-                          var price = menuPro1.price - activityPro1.productsBonus.bonusProducts[h].value;
+                          var price =menuPro1[i].products[j].price - activityPro1.productsBonus.bonusProducts[h].value;
                           activityPro1.productsBonus.bonusProducts[h].activityPrice = price;
                         } else if (activityPro1.productsBonus.bonusProducts[h].discountType == 0) {
-                          var price = menuPro1.price * (activityPro1.productsBonus.bonusProducts[h].value) / 10;
+                          var price = menuPro1[i].products[j].price * (activityPro1.productsBonus.bonusProducts[h].value) / 10;
                           activityPro1.productsBonus.bonusProducts[h].activityPrice = price.toFixed(2);
                         }
 
@@ -1930,10 +1937,10 @@ Page({
                     if (activityPro.productsBonus.bonusProducts[h].discountType == 2) {
                       menuPro[i].products[j].activityPrice = activityPro.productsBonus.bonusProducts[h].value
                     } else if (activityPro.productsBonus.bonusProducts[h].discountType == 1) {
-                      var price = menuPro.price - activityPro.productsBonus.bonusProducts[h].value;
+                      var price = menuPro[i].products[j].price - activityPro.productsBonus.bonusProducts[h].value;
                       menuPro[i].products[j].activityPrice = price;
                     } else if (activityPro.productsBonus.bonusProducts[h].discountType == 0) {
-                      var price = menuPro.price * (activityPro.productsBonus.bonusProducts[h].value) / 10;
+                      var price = menuPro[i].products[j].price * (activityPro.productsBonus.bonusProducts[h].value) / 10;
                       menuPro[i].products[j].activityPrice = price.toFixed(2);
                     }
                   }

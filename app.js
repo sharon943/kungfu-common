@@ -2,6 +2,7 @@
 let url = require('/utils/url.js');
 App({
   onLaunch: function () {
+   
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -25,6 +26,7 @@ App({
                   console.log(resOp.header);
                   this.globalData.openId = resOp.data.data.openid;
                   this.globalData.session_key = resOp.data.data.session_key;
+                  console.log(this.globalData.session_key)
                   this.globalData.JSESSIONID = resOp.header["Set-Cookie"].match(/JSESSIONID=(.*)?;/)[1];
                   if (this.openIdReadyCallback) {
                     this.openIdReadyCallback(resOp.data.data.openid)
@@ -36,7 +38,8 @@ App({
             })
           }
         })
-      
+        //获取手机型号
+        
     
 
     
@@ -71,6 +74,7 @@ App({
         }
       }
     })
+     
   },
   globalData: {
     userInfo: null,
@@ -125,6 +129,7 @@ App({
     Discount:'',
     Phone:'',
     ForgetPhone:'',
+    isIpx: false,
   }
   
   

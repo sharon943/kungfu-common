@@ -225,7 +225,9 @@
           <block wx:else>  
             <text class="GoOkClass" bindtap="btGoSend">￥20起送</text>
           </block>
+           
       </view>
+     <view class="button-group {{isIpx?'fix-iphonex-button':''}}"></view>
     </view>
   </block>
   <block wx:else>
