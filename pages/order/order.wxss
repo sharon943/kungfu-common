@@ -23,3 +23,12 @@
 .scroll .orderViewClass .shopNamClass .text4{
   display: block;float: left;font-size: 13px;color: #ff6600;position: absolute;bottom: 15px;right: 5px;
 }
+.scroll .orderViewClass .shopNamClass .text4_{
+  display: block;float: left;font-size: 13px;color: #000;position: absolute;bottom: 15px;right: 5px;
+}
+.scroll .orderViewClass .shopNamClass .text5{
+  display: block;float: left;font-size: 13px;color: #000;position: absolute;bottom: 15px;right: 70px;background:#EDDBC3;
+padding:0 5px;
+border-radius:3px;z-index: 99999999;
+
+}

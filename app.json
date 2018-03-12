@@ -2,7 +2,7 @@
   "pages": [
     "pages/homepage/homepage",
     "pages/ForgetPwd/ForgetPwd",
-    
+    "pages/WebView/webview",
     "pages/payconfirm/payconfirm",
     "pages/menu/menu",
     "pages/send/send",

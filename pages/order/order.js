@@ -201,5 +201,13 @@ Page({
         }
       }
     })
-  }
+  },
+  go_comment:function(e){
+    console.log(e)
+    var row = e.currentTarget.dataset.item.orderId
+    console.log(row)
+    wx.navigateTo({
+      url: '../WebView/webview?orderId='+row 
+    })
+  },
 })
