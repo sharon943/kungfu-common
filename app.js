@@ -7,24 +7,26 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-
-
    
         //登录态过期
         wx.login({
           success: res => {
             console.log(res);
+            console.log(url.getOpenId + '&code=' + res.code,)
             wx.request({
               url: url.getOpenId + '&code=' + res.code,
               data: {},
               method: 'POST',
               success: resOp => {
                 console.log(resOp);
-
+                console.log(resOp.data.status)
+                console.log(resOp.data.data.openid)
                 if (resOp.data.status == 1) {
 
                   console.log(resOp.header);
                   this.globalData.openId = resOp.data.data.openid;
+                  console.log(resOp.data.data.openid)
+                  console.log(this.globalData.openId)
                   this.globalData.session_key = resOp.data.data.session_key;
                   console.log(this.globalData.session_key)
                   this.globalData.JSESSIONID = resOp.header["Set-Cookie"].match(/JSESSIONID=(.*)?;/)[1];

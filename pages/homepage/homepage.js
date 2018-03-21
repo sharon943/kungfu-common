@@ -12,7 +12,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    ak: "DA64usSVp77iVLCcC9pf5w1m9GeRhYey", //填写申请到的ak  
+    ak: "j7Pq2rUmzXNNN6OcD1dhOOYHIa1kCGn0", //填写申请到的ak  
     markers1: [],
     systWidth: 0,
     dataPro: {},
@@ -42,7 +42,8 @@ Page({
     var that = this;
 
     app.globalData.isAddressOne = false
-    
+    console.log(app.globalData.openId)
+    // app.globalData.openId = 'ok_ik5D74frPjP7__qJpBLG7KE - k'
     wx.getSystemInfo({
       success: function (res) {
         console.log(res.model)
@@ -115,7 +116,7 @@ Page({
         wx.getStorage({
           key: 'LocationAddress',
           success: function (res) {
-            // console.log(res)
+            console.log(res)
 
             that.setData({
               addressStorage: res.data,
@@ -191,17 +192,20 @@ Page({
 
   getOpenIdData: function () {
     var openId;
+    console.log(app.globalData.openId)
     if (app.globalData.openId) {
+      
       openId = app.globalData.openId;
       this.setData({
         openId: app.globalData.openId
       })
-      console.log(this.data.openId)
+      console.log(openId)
       this.getLocationData(openId);
     } else {
       app.openIdReadyCallback = res => {
-        // console.log(res);
+        console.log(res);
         openId = res.openId
+        console.log(openId)
         this.setData({
           openId: res.openId
         })
@@ -216,7 +220,7 @@ Page({
 
     wx.getLocation({
       success: function (res) {
-        // console.log(res); 
+        console.log(res); 
         app.globalData.longitude = res.longitude;
         app.globalData.latitude = res.latitude;
         that.setData({
@@ -240,19 +244,21 @@ Page({
     })
   },
   getCityAddress: function (openId, latitude, longitude) {
+    console.log(3872423)
     var that = this;
     var BMap = new bmap.BMapWX({
       ak: that.data.ak
     });
 
     var fail = function (res) {
-      // console.log(res);
+      console.log(res);
       that.setData({
         isLoading1: true,
         isLoading2: true
       })
     };
     var success = function (data) {
+      console.log(data)
       that.setCacheData(openId, data.originalData.result.addressComponent.city, app.globalData.JSESSIONID, latitude, longitude);
       //返回数据内，已经包含经纬度  
       // console.log(data);
@@ -289,7 +295,7 @@ Page({
       method: 'POST',
       header: JSESSIONID ? { 'Cookie': 'JSESSIONID=' + JSESSIONID } : {},
       success: function (res) {
-     
+     console.log(res)
 
         app.globalData.cityName = city;
         app.globalData.JSESSIONID = JSESSIONID;
